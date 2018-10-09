@@ -1,28 +1,42 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import { BrowserRouter as Router, Link } from 'react-router-dom';
+import Route from 'react-router-dom/Route';
+import Table from './Components/Table';
+import data from './Data/wellness.json';
+import Background from './Components/Background.jpg'
 import './App.css';
 
+
+
 class App extends Component {
+
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+      <Router>
+        <div>
+
+          <h1>The wellness report</h1>
+
+          <h2>Welcome</h2>
+
+          <p>The wellness report is the latest in sports technology providing atheletes perrformance <br />
+           data to ensure their bodies recooperate as fast as possibe.</p>
+
+
+
+           <button><Link to="/Table">LOAD THE DATA!</Link></button>
+<br />
+<br />
+           <Route path="/Table" exact render={
+             () => {
+               return (<Table data={data}/>);
+             }
+           } />
+
       </div>
-    );
-  }
+    </Router>
+)
+}
 }
 
 export default App;
